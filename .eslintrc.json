@@ -38,7 +38,7 @@
       {
         "newlinesBetween": "always",
         "groups": [
-          ["/^react/", "/^next/", "/@next/"],
+          ["/^react/"],
           "module",
           "/^@shared/",
           ["parent", "sibling", "index"]
