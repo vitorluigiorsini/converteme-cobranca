@@ -1,7 +1,31 @@
 const FirstStep = () => {
   return (
     <div className="bg-white w-full px-5 py-[25px] rounded-lg flex flex-col gap-5">
-      <div className="mb-1">Etapas</div>
+      <div className="w-full flex justify-center">
+        <span className="bg-transparent flex items-center justify-center border border-secondary rounded-full text-secondary text-lg font-bold h-9 w-9">
+          1
+        </span>
+        <span className="bg-primary flex self-center h-[2px] w-[169px]"></span>
+        <span className="bg-transparent flex items-center justify-center border border-primary rounded-full text-primary text-lg font-bold h-9 w-9">
+          2
+        </span>
+        <span className="bg-primary flex self-center h-[2px] w-[169px]"></span>
+        <span className="bg-transparent flex items-center justify-center border border-primary rounded-full text-primary text-lg font-bold h-9 w-9">
+          3
+        </span>
+        <span className="bg-primary flex self-center h-[2px] w-[169px]"></span>
+        <span className="bg-transparent flex items-center justify-center border border-primary rounded-full text-primary text-lg font-bold h-9 w-9">
+          4
+        </span>
+      </div>
+      <div className="flex justify-between items-center px-8 mb-1">
+        <h3 className="text-primary text-xs font-normal">Dados da cobrança</h3>
+        <h3 className="text-primary text-xs font-normal pr-5">Juros e Multa</h3>
+        <h3 className="text-primary text-xs font-normal pr-5">
+          Dados do cliente
+        </h3>
+        <h3 className="text-primary text-xs font-normal pr-5">Resumo</h3>
+      </div>
       <div className="flex">
         <div className="flex flex-col gap-5">
           <h3 className="font-bold text-black text-sm">O QUE COBRAR?</h3>
