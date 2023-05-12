@@ -1,3 +1,5 @@
+import { RxCaretDown } from 'react-icons/rx'
+
 const FirstStep = () => {
   return (
     <div className="bg-white w-full px-5 py-[25px] rounded-lg flex flex-col gap-5">
@@ -156,10 +158,10 @@ const FirstStep = () => {
                 </h4>
               </div>
               <label
-                className="text-primary text-sm font-semibold rotate-90 cursor-pointer"
+                className="text-primary text-xl cursor-pointer"
                 htmlFor="handle1"
               >
-                {'>'}
+                <RxCaretDown />
               </label>
             </div>
             <input type="checkbox" name="collapse" id="handle1" />
@@ -186,8 +188,11 @@ const FirstStep = () => {
                   Valor líquido por parcela: R$148,01
                 </h4>
               </div>
-              <label className="text-primary text-sm font-semibold rotate-90">
-                {'>'}
+              <label
+                className="text-primary text-xl cursor-pointer"
+                htmlFor="handle1"
+              >
+                <RxCaretDown />
               </label>
             </div>
           </div>
@@ -205,8 +210,11 @@ const FirstStep = () => {
                   Valor líquido por parcela: R$145,03
                 </h4>
               </div>
-              <label className="text-primary text-sm font-semibold rotate-90">
-                {'>'}
+              <label
+                className="text-primary text-xl cursor-pointer"
+                htmlFor="handle1"
+              >
+                <RxCaretDown />
               </label>
             </div>
           </div>
