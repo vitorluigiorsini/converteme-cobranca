@@ -13,6 +13,57 @@
   color-scheme: light;
 }
 
+.switch {
+  position: relative;
+  display: block;
+  width: 36px;
+  height: 17px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  transition: .3s;
+  border: 1px solid #EA5462;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  top: 2px;
+  left: 4px;
+  background-color: #EA5462;
+  transition: .3s;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch input:checked+.slider {
+  border: 1px solid #00CDA8;
+}
+
+.switch input:checked+.slider:before {
+  left: 21px;
+  background: #00CDA8;
+}
+
+.slider.round {
+  border-radius: 12px;
+}
+
+.slider.round:before {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
 .accordion>input[type="checkbox"] {
   position: absolute;
   left: -100vw;

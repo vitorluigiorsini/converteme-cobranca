@@ -68,7 +68,10 @@ const FirstStep = () => {
                 <h3 className="text-secondary text-[13px] font-semibold">
                   Inserir documentos e arquivos
                 </h3>
-                <input type="checkbox" className="" />
+                <label className="switch">
+                  <input type="checkbox" />
+                  <span className="slider round"></span>
+                </label>
               </div>
               <h5 className="text-primary text-[10px] font-normal">
                 Deseja adicionar documentos para o seu cliente visualizar e
@@ -81,7 +84,10 @@ const FirstStep = () => {
                 <h3 className="text-secondary text-[13px] font-semibold">
                   Emitir nota fiscal de serviço
                 </h3>
-                <input type="checkbox" className="" />
+                <label className="switch">
+                  <input type="checkbox" />
+                  <span className="slider round"></span>
+                </label>
               </div>
               <h5 className="text-primary text-[10px] font-normal">
                 Você deseja emitir uma nota fiscal de serviço vinculado a esta
@@ -95,7 +101,7 @@ const FirstStep = () => {
         <h3 className="text-black text-sm font-bold">
           QUAL SERÁ A FORMA DE PAGAMENTO?
         </h3>
-        <div className="flex items-center -mb-[5px] rounded-lg border border-primary w-[386px] h-[40px] text-center">
+        <div className="flex items-center -mb-[5px] rounded-lg border border-primary w-[386px] h-10 text-center">
           <a className="bg-secondary rounded-lg text-white text-base font-bold py-2 flex-1 cursor-pointer">
             À vista ou parcelado
           </a>
