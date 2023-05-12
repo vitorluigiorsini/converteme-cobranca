@@ -12,3 +12,20 @@
   scroll-behavior: smooth;
   color-scheme: light;
 }
+
+.accordion>input[type="checkbox"] {
+  position: absolute;
+  left: -100vw;
+}
+
+.accordion .content {
+  display: none;
+  height: 0;
+  transition: height 0.3s ease;
+}
+
+.accordion>input[type="checkbox"]:checked~.content {
+  display: initial;
+  height: initial;
+  padding-top: 15px;
+}

@@ -11,6 +11,9 @@ export default {
         red: '#EA5462',
         green: '#00CDA8',
         grey: '#EEEEEE'
+      },
+      boxShadow: {
+        card: '0px 3px 6px #00000029'
       }
     }
   },
