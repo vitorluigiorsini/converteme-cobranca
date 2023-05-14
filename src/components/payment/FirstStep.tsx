@@ -1,22 +1,25 @@
+import { useState } from 'react'
 import { RxCaretDown } from 'react-icons/rx'
 
 const FirstStep = () => {
+  const [paymentBtnState, setPaymentBtnState] = useState(true)
+  const [docsAndFiles, setDocsAndFiles] = useState(false)
+  const [serviceInvoice, setServiceInvoice] = useState(false)
+
   return (
     <div className="bg-white w-full px-5 py-[25px] rounded-lg flex flex-col gap-5">
-      <div className="w-full flex justify-center">
-        <span className="bg-transparent flex items-center justify-center border border-secondary rounded-full text-secondary text-lg font-bold h-9 w-9">
+      <div className="w-full flex justify-around ">
+        <span className="absolute bg-primary flex self-center h-[2px] w-[612px]"></span>
+        <span className="z-10 bg-white flex items-center justify-center border border-secondary rounded-full text-secondary text-lg font-bold h-9 w-9">
           1
         </span>
-        <span className="bg-primary flex self-center h-[2px] w-[169px]"></span>
-        <span className="bg-transparent flex items-center justify-center border border-primary rounded-full text-primary text-lg font-bold h-9 w-9">
+        <span className="z-10 bg-white flex items-center justify-center border border-primary rounded-full text-primary text-lg font-bold h-9 w-9">
           2
         </span>
-        <span className="bg-primary flex self-center h-[2px] w-[169px]"></span>
-        <span className="bg-transparent flex items-center justify-center border border-primary rounded-full text-primary text-lg font-bold h-9 w-9">
+        <span className="z-10 bg-white flex items-center justify-center border border-primary rounded-full text-primary text-lg font-bold h-9 w-9">
           3
         </span>
-        <span className="bg-primary flex self-center h-[2px] w-[169px]"></span>
-        <span className="bg-transparent flex items-center justify-center border border-primary rounded-full text-primary text-lg font-bold h-9 w-9">
+        <span className="z-10 bg-white flex items-center justify-center border border-primary rounded-full text-primary text-lg font-bold h-9 w-9">
           4
         </span>
       </div>
@@ -42,7 +45,7 @@ const FirstStep = () => {
               </span>
               <input
                 className="bg-transparent border border-secondary rounded-lg text-primary text-[13px] font-semibold pl-10 h-[36px] w-[194px] z-10"
-                type="text"
+                type="number"
                 placeholder="0,00"
               />
             </div>
@@ -71,7 +74,15 @@ const FirstStep = () => {
                   Inserir documentos e arquivos
                 </h3>
                 <label className="switch">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={docsAndFiles}
+                    onChange={() =>
+                      docsAndFiles
+                        ? setDocsAndFiles(false)
+                        : setDocsAndFiles(true)
+                    }
+                  />
                   <span className="slider round"></span>
                 </label>
               </div>
@@ -87,7 +98,15 @@ const FirstStep = () => {
                   Emitir nota fiscal de serviço
                 </h3>
                 <label className="switch">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={serviceInvoice}
+                    onChange={() =>
+                      serviceInvoice
+                        ? setServiceInvoice(false)
+                        : setServiceInvoice(true)
+                    }
+                  />
                   <span className="slider round"></span>
                 </label>
               </div>
@@ -104,10 +123,28 @@ const FirstStep = () => {
           QUAL SERÁ A FORMA DE PAGAMENTO?
         </h3>
         <div className="flex items-center -mb-[5px] rounded-lg border border-primary w-[386px] h-10 text-center">
-          <a className="bg-secondary rounded-lg text-white text-base font-bold py-2 flex-1 cursor-pointer">
+          <a
+            className={`${
+              paymentBtnState
+                ? 'bg-secondary rounded-lg text-white'
+                : 'cursor-pointer rounded-l-lg'
+            } text-base font-bold py-2 flex-1 text-secondary`}
+            onClick={
+              !paymentBtnState ? () => setPaymentBtnState(true) : undefined
+            }
+          >
             À vista ou parcelado
           </a>
-          <a className="rounded-l-lg text-secondary text-base font-bold py-2 flex-1 cursor-pointer">
+          <a
+            className={`${
+              !paymentBtnState
+                ? 'bg-secondary rounded-lg text-white'
+                : 'cursor-pointer rounded-l-lg'
+            } text-base font-bold py-2 flex-1 text-secondary`}
+            onClick={
+              paymentBtnState ? () => setPaymentBtnState(false) : undefined
+            }
+          >
             Assinatura
           </a>
         </div>
@@ -119,25 +156,37 @@ const FirstStep = () => {
         <div className="flex gap-[14px]">
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-primary text-xs">
-              Parcelamento
+              {paymentBtnState ? 'Parcelamento' : 'Frequência da cobrança'}
             </label>
             <select className="bg-transparent border border-primary rounded-lg text-primary text-xs font-medium pl-[10px] h-[36px] w-[186px]">
               <option value="0">
-                À vista <span>{' (R$ 150,00)'}</span>
+                {paymentBtnState ? 'À vista R$ 150,00' : 'Mensal'}
               </option>
             </select>
           </div>
           <div className="flex flex-col gap-1">
             <label className="font-semibold text-primary text-xs">
-              Vencimento da cobrança
+              {paymentBtnState
+                ? 'Vencimento da cobrança'
+                : 'Vencimento da 1° cobrança'}
             </label>
             <input
               className="bg-transparent border border-primary rounded-lg text-primary text-xs font-medium pl-[10px] h-[36px] w-[186px]"
-              type="text"
-              placeholder="__/__/__"
+              type="date"
             />
           </div>
         </div>
+        {!paymentBtnState ? (
+          <div className="flex flex-col gap-1">
+            <label className="font-semibold text-primary text-xs">
+              Descrição da cobrança
+              <span className="font-normal text-xs">{' (Opcional)'}</span>
+            </label>
+            <select className="bg-transparent border border-primary rounded-lg text-primary text-xs font-medium pl-[10px] h-[36px] w-[186px]">
+              <option value="0">Sem data definida</option>
+            </select>
+          </div>
+        ) : null}
       </div>
       <div className="flex flex-col gap-5">
         <h3 className="text-black text-sm font-bold">
@@ -145,6 +194,7 @@ const FirstStep = () => {
         </h3>
         <div className="flex flex-col gap-[15px]">
           <div className="accordion flex flex-col border border-primary rounded-lg px-2 pt-[22px] pb-3 min-h-[61px] h-fit w-[545px]">
+            <input type="checkbox" name="collapse" id="handle1" />
             <div className="flex justify-between items-center">
               <div className="flex justify-between flex-1 pr-2">
                 <div className="flex item-center gap-[10px]">
@@ -164,7 +214,6 @@ const FirstStep = () => {
                 <RxCaretDown />
               </label>
             </div>
-            <input type="checkbox" name="collapse" id="handle1" />
             <div className="content text-primary text-xs font-normal">
               <p>
                 Taxa de R$ 1,99 por cobrança recebida. Receba em 1 dia útil após
@@ -188,10 +237,7 @@ const FirstStep = () => {
                   Valor líquido por parcela: R$148,01
                 </h4>
               </div>
-              <label
-                className="text-primary text-xl cursor-pointer"
-                htmlFor="handle1"
-              >
+              <label className="text-primary text-xl cursor-pointer">
                 <RxCaretDown />
               </label>
             </div>
@@ -210,10 +256,7 @@ const FirstStep = () => {
                   Valor líquido por parcela: R$145,03
                 </h4>
               </div>
-              <label
-                className="text-primary text-xl cursor-pointer"
-                htmlFor="handle1"
-              >
+              <label className="text-primary text-xl cursor-pointer">
                 <RxCaretDown />
               </label>
             </div>

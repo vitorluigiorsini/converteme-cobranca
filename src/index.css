@@ -80,3 +80,7 @@
   height: initial;
   padding-top: 15px;
 }
+
+.accordion>input[type="checkbox"]:checked~div>label {
+  transform: rotate(180deg);
+}
