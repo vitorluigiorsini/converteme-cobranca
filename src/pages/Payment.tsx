@@ -1,4 +1,4 @@
-import FirstStep from './FirstStep'
+import FirstStep from '../shared/components/payment/FirstStep'
 
 const Payment = () => {
   return (

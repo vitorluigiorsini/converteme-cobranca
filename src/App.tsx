@@ -1,16 +1,18 @@
-import { Option, Sidebar } from './components'
+import { BrowserRouter } from 'react-router-dom'
+
+import { AppRoutes } from './routes'
+import { Sidebar } from './shared/components'
 
 const App = () => {
   return (
-    <>
-      <h1 className="flex justify-center items-center h-[65px] w-full text-white font-bold bg-secondary">
+    <BrowserRouter>
+      <nav className="flex justify-center items-center h-[65px] w-full text-white font-bold bg-secondary">
         Navbar
-      </h1>
-      <div className="flex">
-        <Sidebar />
-        <Option />
-      </div>
-    </>
+      </nav>
+      <Sidebar>
+        <AppRoutes />
+      </Sidebar>
+    </BrowserRouter>
   )
 }
 
